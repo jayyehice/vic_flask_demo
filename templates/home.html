@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+
+{% block title %}home{% endblock %}
+
+
+
+{% block main %}
+
+<div class="mt-3 container welcome">
+
+    <div class="row">
+        <div class="w-100">
+            <h1><i class="fas fa-baseball-ball"></i>flask 框架語法</h1>
+            <p>app.py 是整個網站的起始檔案，用來設定 網址 要導到什麼頁面</p>
+            <p>靜態文件(.js .css 圖檔等) 放在 static資料夾</p>
+            <p>HTML檔放在 templates資料夾</p>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="w-100">
+            <h1><i class="fas fa-baseball-ball"></i>HTML網頁</h1>
+            <p>base.html 用來存放共用的部分，例如:引用的css檔、logo、上方導覽選單連結、下方的footer</p>
+            <p>HTML檔中 雙大括號可以放入變數、大括號加百分比可以引用變數或base.html，可參考 <a href="./variable">變數</a> 網頁</p>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="w-100">
+            <h1><i class="fas fa-baseball-ball"></i>API</h1>
+            <p>前端用JavaScript傳參數，後端flask接到後計算，回傳給JavaScript。</p>
+            <p>JavaScript將回傳值顯示在頁面上</p>
+            <p>可參考 <a href="./api">API</a> 網頁</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+{% block script %}
+<script>
+
+</script>
+{% endblock %}

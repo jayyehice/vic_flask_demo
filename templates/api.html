@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}{% endblock %}
+
+{% block main %}
+
+<div class="container welcome">
+    <div class="row">
+        <div class="w-100">
+            <h1>api 傳參數給flask，等回傳結果</h1>
+            <div class="d-flex align-items-center mt-2">
+                <h6 class="mb-0 mr-2">參數A</h6>
+                <input type="number" min="0" value="0" id="valueA" />
+            </div>
+            <div class="d-flex align-items-center mt-2">
+                <h6 class="mb-0 mr-2">參數B</h6>
+                <input type="number" min="0" value="0" id="valueB" />
+            </div>
+            <button class="btn btn-primary mt-3" id="getResult">取得結果</button>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="w-100">
+            <h4>按下按鈕後，顯示 參數A+參數B 回傳結果</h4>
+            <h6 id="showApiResult"></h6>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script>
+    //用id來抓特定標籤
+    let valueA = document.getElementById('valueA');
+    let valueB = document.getElementById('valueB');
+    let getResultButton = document.getElementById('getResult');
+    let showApiResult = document.getElementById('showApiResult');
+
+    //監聽click事件，按鈕點擊後要做的事
+    getResultButton.addEventListener('click', e => {
+        //api網址
+        let url = './calculate';
+
+        //headers固定寫法
+        let headers = {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+        }
+
+        //POST API 的body参數。
+        let body = {
+            'keyA':valueA.value,
+            'keyB':valueB.value
+        }
+
+        //JavaScript 原生 fetch方法，來Call API
+        fetch(
+            url, {
+            method: "POST",
+            headers: headers,
+            //需把body参數轉成字串
+            body: JSON.stringify(body)
+        })
+            .then(response => response.json()) //取得的字串，用.json()轉成物件
+            .then(result => {
+                showApiResult.innerText = result['result'];//將結果用innerText塞到指定的位置
+            });
+    })
+</script>
+{% endblock %}

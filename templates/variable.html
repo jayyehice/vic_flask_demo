@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}變數{% endblock %}
+
+{% block main %}
+
+<div class="container welcome">
+    <div class="row">
+        <div class="w-100">
+            <h1>取得flask傳來的變數</h1>
+            <h6>姓名：{{ data["person"]["name"] }}</h6>
+            <h6>性別：{{ data["person"]["gender"] }}</h6>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="w-100">
+            <h1>for迴圈 + if</h1>
+            <ul>
+                {% for i in range(3): %}
+                <li>
+                    {% if(data["list"][i] != '蘋果') %}
+                        <h6>{{ data["list"][i] }}</h6>
+                    {% else %}
+                        <h6>{{ data["list"][i] }}手機</h6>
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script>
+
+</script>
+{% endblock %}
